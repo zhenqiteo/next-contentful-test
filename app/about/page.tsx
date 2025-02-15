@@ -138,7 +138,7 @@ const GlobalPresence = () => {
           </div>
           <div className="relative w-full md:w-1/2 h-[400px]">
             <Image
-              src="/images/global-presence.jpg"
+              src="/images/join-us-planet.webp"
               alt="SUPCON's global presence"
               fill
               className="rounded-lg shadow-lg object-cover"
