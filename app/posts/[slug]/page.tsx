@@ -10,6 +10,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
   });
 
   try {
+    // Fetch the current post
     const entries = await client.getEntries({
       content_type: "post",
       "fields.slug": params.slug,
@@ -21,57 +22,28 @@ export default async function Post({ params }: { params: { slug: string } }) {
     }
 
     const post = entries.items[0];
+    const currentTags = post.fields.tags || [];
 
-    // Define how we want to render different types of content
-    const options = {
-      renderNode: {
-        [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
-          <p className="mb-4">{children}</p>
-        ),
-        [BLOCKS.HEADING_1]: (node: any, children: any) => (
-          <h1 className="text-3xl font-bold mb-4">{children}</h1>
-        ),
-        [BLOCKS.HEADING_2]: (node: any, children: any) => (
-          <h2 className="text-2xl font-bold mb-3">{children}</h2>
-        ),
-        [BLOCKS.HEADING_3]: (node: any, children: any) => (
-          <h3 className="text-xl font-bold mb-2">{children}</h3>
-        ),
-        [BLOCKS.UL_LIST]: (node: any, children: any) => (
-          <ul className="list-disc ml-6 mb-4">{children}</ul>
-        ),
-        [BLOCKS.OL_LIST]: (node: any, children: any) => (
-          <ol className="list-decimal ml-6 mb-4">{children}</ol>
-        ),
-        [BLOCKS.LIST_ITEM]: (node: any, children: any) => (
-          <li className="mb-1">{children}</li>
-        ),
-        [BLOCKS.QUOTE]: (node: any, children: any) => (
-          <blockquote className="border-l-4 border-gray-300 pl-4 mb-4 italic">
-            {children}
-          </blockquote>
-        ),
-        [INLINES.HYPERLINK]: (node: any, children: any) => (
-          <a href={node.data.uri} className="text-blue-600 hover:underline">
-            {children}
-          </a>
-        ),
-      },
-    };
+    // Fetch related posts that share tags with the current post
+    const relatedPosts = await client.getEntries({
+      content_type: "post",
+      limit: 3,
+      "fields.slug[ne]": params.slug, // Exclude current post
+      "fields.tags[in]": currentTags.join(","),
+    });
 
     return (
       <main className="container mx-auto px-4 py-8">
-        {/* Add the back button container */}
         <div className="max-w-2xl mx-auto mb-8">
           <Link
             href="/"
             className="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded transition-colors"
           >
-            {/* Optional: Add an arrow icon for better UX */}
             <span className="mr-2">←</span>
             Back to All Posts
           </Link>
         </div>
+
         <article className="max-w-2xl mx-auto">
           {post.fields.coverImage?.fields?.file?.url && (
             <img
@@ -82,12 +54,63 @@ export default async function Post({ params }: { params: { slug: string } }) {
           )}
           <h1 className="text-4xl font-bold mb-6">{post.fields.title}</h1>
 
+          {/* Tags section */}
+          {currentTags.length > 0 && (
+            <div className="mb-6">
+              {currentTags.map((tag: string) => (
+                <span
+                  key={tag}
+                  className="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm mr-2 mb-2"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
           <div className="text-sm text-gray-500 mb-8">
             Published: {new Date(post.sys.createdAt).toLocaleDateString()}
           </div>
-          <div className="prose lg:prose-xl">
-            {documentToReactComponents(post.fields.content, options)}
+
+          <div className="prose lg:prose-xl mb-12">
+            {documentToReactComponents(post.fields.content)}
           </div>
+
+          {/* Related Posts section */}
+          {relatedPosts.items.length > 0 && (
+            <div className="border-t pt-8 mt-8">
+              <h2 className="text-2xl font-bold mb-6">Related Posts</h2>
+              <div className="grid gap-6">
+                {relatedPosts.items.map((relatedPost: any) => (
+                  <Link
+                    href={`/posts/${relatedPost.fields.slug}`}
+                    key={relatedPost.sys.id}
+                    className="block hover:bg-gray-50 p-4 rounded-lg transition-colors"
+                  >
+                    <div className="flex items-start">
+                      {relatedPost.fields.coverImage?.fields?.file?.url && (
+                        <img
+                          src={`https:${relatedPost.fields.coverImage.fields.file.url}`}
+                          alt={relatedPost.fields.title}
+                          className="w-24 h-24 object-cover rounded mr-4"
+                        />
+                      )}
+                      <div>
+                        <h3 className="font-semibold mb-2">
+                          {relatedPost.fields.title}
+                        </h3>
+                        <div className="text-sm text-gray-500">
+                          {new Date(
+                            relatedPost.sys.createdAt
+                          ).toLocaleDateString()}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </article>
       </main>
     );
