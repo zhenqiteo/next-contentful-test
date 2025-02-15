@@ -84,7 +84,7 @@ const Header = () => {
       dropdownItems: [
         {
           label: "Our Story",
-          href: "/about/story",
+          href: "/about",
           description: "Learn about our journey",
         },
         {
@@ -103,7 +103,7 @@ const Header = () => {
 
   const headerStyle = {
     background: scrolled
-      ? "rgb(3, 44, 166, 0.7)"
+      ? "rgb(0,0,0, 0.1)"
       : "none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0)",
     transition: "all 0.3s ease-in-out",
   };
