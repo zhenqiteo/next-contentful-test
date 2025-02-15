@@ -1,69 +1,51 @@
-import Link from "next/link";
-import { draftMode } from "next/headers";
+import { createClient } from "contentful";
 
-import MoreStories from "../../more-stories";
-import Avatar from "../../avatar";
-import Date from "../../date";
-import CoverImage from "../../cover-image";
+export default async function Post({ params }: { params: { slug: string } }) {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID!,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
+  });
 
-import { Markdown } from "@/lib/markdown";
-import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
+  try {
+    const entries = await client.getEntries({
+      content_type: "post",
+      "fields.slug": params.slug,
+      limit: 1,
+    });
 
-export async function generateStaticParams() {
-  const allPosts = await getAllPosts(false);
+    if (!entries.items.length) {
+      throw new Error("Post not found");
+    }
 
-  return allPosts.map((post) => ({
-    slug: post.slug,
-  }));
-}
+    const post = entries.items[0];
 
-export default async function PostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { isEnabled } = draftMode();
-  const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
-
-  return (
-    <div className="container mx-auto px-5">
-      <h2 className="mb-20 mt-8 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter">
-        <Link href="/" className="hover:underline">
-          Blog
-        </Link>
-        .
-      </h2>
-      <article>
-        <h1 className="mb-12 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl">
-          {post.title}
-        </h1>
-        <div className="hidden md:mb-12 md:block">
-          {post.author && (
-            <Avatar name={post.author.name} picture={post.author.picture} />
+    return (
+      <main className="container mx-auto px-4 py-8">
+        <article className="max-w-2xl mx-auto">
+          {post.fields.coverImage?.fields?.file?.url && (
+            <img
+              src={`https:${post.fields.coverImage.fields.file.url}`}
+              alt={post.fields.title}
+              className="w-full h-96 object-contain mb-6 rounded"
+            />
           )}
-        </div>
-        <div className="mb-8 sm:mx-0 md:mb-16">
-          <CoverImage title={post.title} url={post.coverImage.url} />
-        </div>
-        <div className="mx-auto max-w-2xl">
-          <div className="mb-6 block md:hidden">
-            {post.author && (
-              <Avatar name={post.author.name} picture={post.author.picture} />
-            )}
+          <h1 className="text-4xl font-bold mb-6">{post.fields.title}</h1>
+          <div className="text-sm text-gray-500 mb-8">
+            Published: {new Date(post.sys.createdAt).toLocaleDateString()}
           </div>
-          <div className="mb-6 text-lg">
-            <Date dateString={post.date} />
+          <div className="prose lg:prose-xl">
+            {post.fields.content?.content?.[0]?.content?.[0]?.value}
           </div>
-        </div>
-
-        <div className="mx-auto max-w-2xl">
-          <div className="prose">
-            <Markdown content={post.content} />
-          </div>
-        </div>
-      </article>
-      <hr className="border-accent-2 mt-28 mb-24" />
-      <MoreStories morePosts={morePosts} />
-    </div>
-  );
+        </article>
+      </main>
+    );
+  } catch (error) {
+    console.error("Error fetching post:", error);
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold mb-4">Error</h1>
+        <p>Error details: {(error as Error).message}</p>
+      </div>
+    );
+  }
 }

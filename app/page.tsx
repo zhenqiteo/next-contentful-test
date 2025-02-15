@@ -1,101 +1,58 @@
+import { createClient } from "contentful";
 import Link from "next/link";
-import { draftMode } from "next/headers";
 
-import Date from "./date";
-import CoverImage from "./cover-image";
-import Avatar from "./avatar";
-import MoreStories from "./more-stories";
+export default async function Home() {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID!,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
+  });
 
-import { getAllPosts } from "@/lib/api";
-import { CMS_NAME, CMS_URL } from "@/lib/constants";
+  try {
+    const response = await client.getEntries({
+      content_type: "post",
+      order: "-sys.createdAt",
+    });
 
-function Intro() {
-  return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
-      <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8">
-        Blog.
-      </h1>
-      <h2 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        A statically generated blog example using{" "}
-        <a
-          href="https://nextjs.org/"
-          className="underline hover:text-success duration-200 transition-colors"
-        >
-          Next.js
-        </a>{" "}
-        and{" "}
-        <a
-          href={CMS_URL}
-          className="underline hover:text-success duration-200 transition-colors"
-        >
-          {CMS_NAME}
-        </a>
-        .
-      </h2>
-    </section>
-  );
-}
-
-function HeroPost({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}: {
-  title: string;
-  coverImage: any;
-  date: string;
-  excerpt: string;
-  author: any;
-  slug: string;
-}) {
-  return (
-    <section>
-      <div className="mb-8 md:mb-16">
-        <CoverImage title={title} slug={slug} url={coverImage.url} />
-      </div>
-      <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
-        <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
-            <Link href={`/posts/${slug}`} className="hover:underline">
-              {title}
+    return (
+      <main className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold mb-8">News and Media</h1>
+        <div className="grid gap-8">
+          {response.items.map((post: any) => (
+            <Link href={`/posts/${post.fields.slug}`} key={post.sys.id}>
+              <article className="border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                {post.fields.coverImage?.fields?.file?.url && (
+                  <img
+                    src={`https:${post.fields.coverImage.fields.file.url}`}
+                    alt={post.fields.title}
+                    className="w-full h-80 object-contain mb-4 rounded"
+                  />
+                )}
+                <h2 className="text-2xl font-semibold mb-4">
+                  {post.fields.title}
+                </h2>
+                <p className="text-gray-600 mb-4">
+                  {post.fields.content?.content?.[0]?.content?.[0]?.value?.substring(
+                    0,
+                    200
+                  )}
+                  ...
+                </p>
+                <div className="text-sm text-gray-500">
+                  Published: {new Date(post.sys.createdAt).toLocaleDateString()}
+                </div>
+              </article>
             </Link>
-          </h3>
-          <div className="mb-4 md:mb-0 text-lg">
-            <Date dateString={date} />
-          </div>
+          ))}
         </div>
-        <div>
-          <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-          {author && <Avatar name={author.name} picture={author.picture} />}
-        </div>
+      </main>
+    );
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold mb-4">Error</h1>
+        <p>Failed to load blog posts.</p>
       </div>
-    </section>
-  );
-}
-
-export default async function Page() {
-  const { isEnabled } = draftMode();
-  const allPosts = await getAllPosts(isEnabled);
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
-
-  return (
-    <div className="container mx-auto px-5">
-      <Intro />
-      {heroPost && (
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          date={heroPost.date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-        />
-      )}
-      <MoreStories morePosts={morePosts} />
-    </div>
-  );
+    );
+  }
 }
