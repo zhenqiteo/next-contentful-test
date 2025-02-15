@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export const metadata = {
   title: "cONTENTFUL TEST",
@@ -22,8 +23,9 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body>
         <section className="min-h-screen">
+          <Header />
           <main>{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </section>
       </body>
     </html>

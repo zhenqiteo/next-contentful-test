@@ -52,18 +52,22 @@ export default async function Post({ params }: { params: { slug: string } }) {
               className="w-full h-96 object-contain mb-6 rounded"
             />
           )}
-          <h1 className="text-4xl font-bold mb-6">{post.fields.title}</h1>
+          <h1 className="text-[#00205B] text-4xl font-bold mb-6">
+            {post.fields.title}
+          </h1>
 
+          {/* Tags section */}
           {/* Tags section */}
           {currentTags.length > 0 && (
             <div className="mb-6">
               {currentTags.map((tag: string) => (
-                <span
+                <Link
                   key={tag}
-                  className="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm mr-2 mb-2"
+                  href={`/tags/${encodeURIComponent(tag)}`}
+                  className="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm mr-2 mb-2 hover:bg-gray-200 transition-colors"
                 >
                   {tag}
-                </span>
+                </Link>
               ))}
             </div>
           )}

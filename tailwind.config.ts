@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography";
+import { colors } from "./lib/colors";
 
 export default {
   content: [
@@ -12,10 +13,14 @@ export default {
       fontFamily: {
         sans: ["var(--font-inter)"],
       },
+      colors: colors,
     },
   },
   future: {
     hoverOnlyWhenSupported: true,
   },
   plugins: [typography],
+  variants: {
+    scrollbar: ["rounded"],
+  },
 } satisfies Config;
