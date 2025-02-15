@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import NavItem from "./NavItem";
-import ContactButton from "./ContactButton";
+import NavItem from "./ui/NavItem";
+import ContactButton from "./ui/ContactButton";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,7 +32,7 @@ const Header = () => {
           </Link>
 
           <div className="max-lg:hidden">
-            <div className="flex items-center gap-0 font-medium text-xs xl:text-sm">
+            <div className="flex items-center gap-0 font-normal text-sm xl:text-xs">
               {navItems.map((item, index) => (
                 <NavItem
                   key={index}

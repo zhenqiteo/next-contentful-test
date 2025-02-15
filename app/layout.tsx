@@ -24,7 +24,9 @@ export default function RootLayout({
       <body>
         <section className="min-h-screen">
           <Header />
-          <main>{children}</main>
+          <main className="pt-[72px] md:pt-[80px] lg:pt-[96px] transition-spacing duration-300">
+            {children}
+          </main>
           {/* <Footer /> */}
         </section>
       </body>

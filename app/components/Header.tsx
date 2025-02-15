@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import NavItem from "./ui/NavItem";
@@ -8,28 +8,124 @@ import ContactButton from "./ui/ContactButton";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
+  useEffect(() => {
+    const scrollThreshold = 50;
+    const handleScroll = () => {
+      setScrolled(window.scrollY > scrollThreshold);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Navigation items with their dropdown contents
   const navItems = [
-    { text: "Solutions", hasDropdown: true },
-    { text: "Industries", hasDropdown: true },
-    { text: "Resources", href: "/Resources" },
-    { text: "Newsroom", href: "/Newsroom" },
-    { text: "Career", href: "/Career" },
-    { text: "About Us", hasDropdown: true },
+    {
+      text: "Solutions",
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          label: "Universal Control System",
+          href: "/solutions/ucs",
+          description: "NYX THE ALL AMAZING UCS",
+        },
+        {
+          label: "TPT",
+          href: "/solutions/tpt",
+          description:
+            "Tailored solutions for predictive analytics and maintenance",
+        },
+        {
+          label: "Custom Development",
+          href: "/solutions/custom",
+          description: "Bespoke solutions for unique needs",
+        },
+      ],
+    },
+    {
+      text: "Industries",
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          label: "Healthcare",
+          href: "/industries/healthcare",
+          description: "Solutions for healthcare providers",
+        },
+        {
+          label: "Finance",
+          href: "/industries/finance",
+          description: "Financial services solutions",
+        },
+        {
+          label: "Education",
+          href: "/industries/education",
+          description: "Educational technology solutions",
+        },
+      ],
+    },
+    {
+      text: "Resources",
+      href: "/Resources",
+    },
+    {
+      text: "Newsroom",
+      href: "/newsroom",
+    },
+    {
+      text: "Career",
+      href: "/Career",
+    },
+    {
+      text: "About Us",
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          label: "Our Story",
+          href: "/about/story",
+          description: "Learn about our journey",
+        },
+        {
+          label: "Team",
+          href: "/about/team",
+          description: "Meet our leadership team",
+        },
+        {
+          label: "Contact",
+          href: "/about/contact",
+          description: "Get in touch with us",
+        },
+      ],
+    },
   ];
 
+  const headerStyle = {
+    background: scrolled
+      ? "rgb(3, 44, 166, 0.7)"
+      : "none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0)",
+    transition: "all 0.3s ease-in-out",
+  };
+
+  const navStyle = {
+    opacity: 1,
+    transform: "none",
+  };
+
   return (
-    <header className="fixed top-0 w-full z-[1000] py-5">
-      <nav className="relative w-full flex max-w-full">
+    <header className="fixed top-0 w-full z-[1000] py-5" style={headerStyle}>
+      <nav className="relative w-full flex max-w-full" style={navStyle}>
         <div className="max-w-screen-2xl mx-auto px-5 flex-1 flex items-center justify-between rounded-xl text-light">
-          <Link href="/" aria-label="Home">
+          <Link href="/" aria-label="home link">
             <Image
-              src="/LOGO.svg"
+              src="/logo.svg"
               alt="Logo"
               width={300}
               height={200}
               className="h-5 w-auto"
               priority
+              style={{ color: "transparent" }}
             />
           </Link>
 
@@ -41,6 +137,8 @@ const Header = () => {
                   text={item.text}
                   href={item.href}
                   hasDropdown={item.hasDropdown}
+                  dropdownItems={item.dropdownItems}
+                  isScrolled={scrolled}
                 />
               ))}
             </div>
