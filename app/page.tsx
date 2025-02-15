@@ -16,7 +16,7 @@ export default async function Home() {
     return (
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-8">News and Media</h1>
-        <div className="grid gap-8">
+        <div className="grid grid-cols-3 gap-8">
           {response.items.map((post: any) => (
             <Link href={`/posts/${post.fields.slug}`} key={post.sys.id}>
               <article className="border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
