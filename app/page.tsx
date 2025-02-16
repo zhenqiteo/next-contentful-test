@@ -10,7 +10,7 @@ export default async function Home() {
   try {
     const response = await client.getEntries({
       content_type: "post",
-      order: "-sys.createdAt",
+      order: ["-sys.createdAt"],
     });
 
     return (

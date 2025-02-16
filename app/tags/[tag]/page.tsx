@@ -12,8 +12,8 @@ export default async function TagPage({ params }: { params: { tag: string } }) {
   // Fetch posts with the specific tag
   const response = await client.getEntries({
     content_type: "post",
-    "fields.tags[in]": params.tag,
-    order: "-fields.date",
+    "fields.tags[in]": [params.tag],
+    order: ["-fields.date"],
   });
 
   return (
