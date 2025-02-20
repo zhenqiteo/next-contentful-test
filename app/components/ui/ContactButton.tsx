@@ -5,11 +5,7 @@ import Link from "next/link";
 
 const ContactButton = () => {
   return (
-    <Link
-      href="/OnlineAdmission"
-      className="max-lg:hidden"
-      aria-label="Contact Us"
-    >
+    <Link href="/contact-us" className="max-lg:hidden" aria-label="Contact Us">
       <button className="group cursor-pointer border-opacity-0 bg-transparent transition-all duration-500 hover:border-opacity-100 text-light font-medium max-w-fit rounded-full border-white/50 hover:border-white hover:text-white border-[2px] p-[2px]">
         <div className="relative transition-all duration-500 overflow-hidden !leading-[1.1] flex items-center max-w-fit rounded-full bg-transparent gap-2 h-7 md:h-8 px-5 text-xs md:text-sm">
           Contact Us

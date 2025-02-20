@@ -117,29 +117,29 @@ export default function Footer() {
 
             {/* Navigation grid */}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 pt-8 border-t border-[#F5F5F550]">
-              <p className="col-span-1 md:col-span-2 text-xl leading-normal font-poppins">
-              Leading Industrial AI To
-              <br className="max-md:hidden" />
-              Sustainable Growth
+              <p className="col-span-1 md:col-span-2 text-xl leading-normal">
+                Leading Industrial AI To
+                <br className="max-md:hidden" />
+                Sustainable Growth
               </p>
 
               {data.map((section, index) => (
-              <div className="col-span-1" key={index}>
-                <h3 className="text-grayD mb-2 md:mb-4 uppercase text-base tracking-wider">
-                {section.title}
-                </h3>
-                <div className="max-md:text-sm flex md:flex-col max-md:flex-wrap max-md:gap-x-3">
-                {section.links.map((link, linkIndex) => (
-                  <Link href={link.href} key={linkIndex}>
-                  <LinkEffect
-                    textClass={"p-0.5 sm:p-1"}
-                    noicon
-                    text={link.name}
-                  />
-                  </Link>
-                ))}
+                <div className="col-span-1" key={index}>
+                  <h3 className="text-grayD mb-2 md:mb-4 uppercase text-base tracking-wider">
+                    {section.title}
+                  </h3>
+                  <div className="max-md:text-sm flex md:flex-col max-md:flex-wrap max-md:gap-x-3">
+                    {section.links.map((link, linkIndex) => (
+                      <Link href={link.href} key={linkIndex}>
+                        <LinkEffect
+                          textClass={"p-0.5 sm:p-1"}
+                          noicon
+                          text={link.name}
+                        />
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
               ))}
             </div>
 
