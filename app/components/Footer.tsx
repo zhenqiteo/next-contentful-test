@@ -69,10 +69,11 @@ export default function Footer() {
               <div className="flex flex-col items-start sm:gap-1 md:gap-4">
                 <Link href="#" className="flex items-center gap-2">
                   <LinkEffect
-                    textClass={"text-xl sm:text-3xl md:text-4xl leading-loose"}
+                    textClass={
+                      "text-xl sm:text-3xl md:text-4xl leading-[32px] font-light"
+                    }
                     text={"CONTACT US"}
                   ></LinkEffect>
-                  {/* <FiArrowUpRight className="text-xl sm:text-3xl md:text-4xl" /> */}
                   <div data-svg-wrapper>
                     <svg
                       width="28"
@@ -89,21 +90,25 @@ export default function Footer() {
                       />
                     </svg>
                   </div>
+                  {/* <FiArrowUpRight className="text-xl sm:text-3xl md:text-4xl" /> */}
                 </Link>
                 <div className="flex gap-3 sm:gap-6 text-xl md:text-3xl">
                   <Link
                     href="https://www.linkedin.com/company/%E4%B8%AD%E6%8E%A7%E6%8A%80%E6%9C%AF/"
-                    className="hover:text-sec transition-colors"
+                    className="hover:text-blue-500 transition-colors"
                   >
                     <FaLinkedin />
                   </Link>
                   <Link
                     href="https://youtube.com/@supcon742?si=4HX_1FCXM0aABxDH"
-                    className="hover:text-sec transition-colors"
+                    className="hover:text-red-600 transition-colors"
                   >
                     <FaYoutube />
                   </Link>
-                  <Link href="#" className="hover:text-sec transition-colors">
+                  <Link
+                    href="#"
+                    className="hover:text-green-500 transition-colors"
+                  >
                     <LuMessageCircleMore />
                   </Link>
                 </div>
@@ -112,29 +117,29 @@ export default function Footer() {
 
             {/* Navigation grid */}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8 pt-8 border-t border-[#F5F5F550]">
-              <p className="col-span-1 md:col-span-2 text-xl leading-normal">
-                Leading Industrial AI To
-                <br className="max-md:hidden" />
-                Sustainable Growth
+              <p className="col-span-1 md:col-span-2 text-xl leading-normal font-poppins">
+              Leading Industrial AI To
+              <br className="max-md:hidden" />
+              Sustainable Growth
               </p>
 
               {data.map((section, index) => (
-                <div className="col-span-1" key={index}>
-                  <h3 className="text-grayD mb-2 md:mb-4 uppercase text-base tracking-wider">
-                    {section.title}
-                  </h3>
-                  <div className="max-md:text-sm flex md:flex-col max-md:flex-wrap max-md:gap-x-3">
-                    {section.links.map((link, linkIndex) => (
-                      <Link href={link.href} key={linkIndex}>
-                        <LinkEffect
-                          textClass={"p-0.5 sm:p-1"}
-                          noicon
-                          text={link.name}
-                        />
-                      </Link>
-                    ))}
-                  </div>
+              <div className="col-span-1" key={index}>
+                <h3 className="text-grayD mb-2 md:mb-4 uppercase text-base tracking-wider">
+                {section.title}
+                </h3>
+                <div className="max-md:text-sm flex md:flex-col max-md:flex-wrap max-md:gap-x-3">
+                {section.links.map((link, linkIndex) => (
+                  <Link href={link.href} key={linkIndex}>
+                  <LinkEffect
+                    textClass={"p-0.5 sm:p-1"}
+                    noicon
+                    text={link.name}
+                  />
+                  </Link>
+                ))}
                 </div>
+              </div>
               ))}
             </div>
 
