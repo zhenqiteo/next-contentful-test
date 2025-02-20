@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const Hero = () => {
   return (
     <div className="relative">
-      <div className="relative h-screen min-h-[600px] bg-blue-600 overflow-hidden">
+      <div className="relative h-screen min-h-[800px] bg-blue-600 overflow-hidden">
         {/* Gradient overlay for visual depth */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-500 to-blue-600" />
 
