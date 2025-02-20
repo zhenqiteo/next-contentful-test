@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FaYoutube } from "react-icons/fa";
 import { LuMessageCircleMore } from "react-icons/lu";
 import LinkEffect from "./ui/LinkEffect";
+import { FiArrowUpRight } from "react-icons/fi";
 
 const data = [
   {
@@ -66,17 +67,40 @@ export default function Footer() {
                 />
               </div>
               <div className="flex flex-col items-start sm:gap-1 md:gap-4">
-                <Link href="#">
+                <Link href="#" className="flex items-center gap-2">
                   <LinkEffect
-                    textClass={"text-xl sm:text-3xl md:text-4xl"}
+                    textClass={"text-xl sm:text-3xl md:text-4xl leading-loose"}
                     text={"CONTACT US"}
-                  />
+                  ></LinkEffect>
+                  {/* <FiArrowUpRight className="text-xl sm:text-3xl md:text-4xl" /> */}
+                  <div data-svg-wrapper>
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 28 28"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3 25L26 2M26 2H3M26 2V25"
+                        stroke="#F5F5F5"
+                        strokeWidth="3.44462"
+                        strokeLinecap="square"
+                      />
+                    </svg>
+                  </div>
                 </Link>
                 <div className="flex gap-3 sm:gap-6 text-xl md:text-3xl">
-                  <Link href="#" className="hover:text-sec transition-colors">
+                  <Link
+                    href="https://www.linkedin.com/company/%E4%B8%AD%E6%8E%A7%E6%8A%80%E6%9C%AF/"
+                    className="hover:text-sec transition-colors"
+                  >
                     <FaLinkedin />
                   </Link>
-                  <Link href="#" className="hover:text-sec transition-colors">
+                  <Link
+                    href="https://youtube.com/@supcon742?si=4HX_1FCXM0aABxDH"
+                    className="hover:text-sec transition-colors"
+                  >
                     <FaYoutube />
                   </Link>
                   <Link href="#" className="hover:text-sec transition-colors">

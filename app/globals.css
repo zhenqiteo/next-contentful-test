@@ -2,9 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add this to your global.css or relevant stylesheet */
+:root {
+  --font-inter: "Inter", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+}
 
-/* Hide scrollbar by default */
+body {
+  font-family: var(--font-inter);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-poppins);
+}
+
+/* Hide scrollbar by default*/
 ::-webkit-scrollbar {
   width: 5px;
 }

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import VRSection from "@/components/VRSection";
 
 // The metadata helps with SEO and social sharing
 export const metadata: Metadata = {
@@ -157,6 +158,7 @@ export default function AboutPage() {
       <Hero />
       <CoreValues />
       <GlobalPresence />
+      <VRSection />
     </main>
   );
 }
