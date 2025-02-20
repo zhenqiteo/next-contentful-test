@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: "export", // Comment out or remove this line for dev
   images: {
     remotePatterns: [
       {
@@ -9,6 +10,11 @@ const nextConfig = {
         pathname: "/b6we9iv2jxae/**",
       },
     ],
+  },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
   },
 };
 

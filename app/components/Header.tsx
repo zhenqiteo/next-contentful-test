@@ -113,7 +113,7 @@ const Header = () => {
 
   const headerStyle = {
     background: scrolled
-      ? "rgb(0,0,0, 0.1)"
+      ? "rgb(0,0,0, 0.6)"
       : "none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0)",
     transition: "all 0.3s ease-in-out",
   };
@@ -121,6 +121,7 @@ const Header = () => {
   const navStyle = {
     opacity: 1,
     transform: "none",
+    color: scrolled ? "white" : "inherit", // Add this line to change color when scrolled
   };
 
   return (

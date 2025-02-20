@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
 export const metadata = {
-  title: "cONTENTFUL TEST",
+  title: "Contentful",
   description: `This is a blog built with Next.js.`,
 };
 
@@ -27,7 +27,7 @@ export default function RootLayout({
           <main className="pt-[72px] md:pt-[80px] lg:pt-[96px] transition-spacing duration-300">
             {children}
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </section>
       </body>
     </html>

@@ -21,7 +21,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
       throw new Error("Post not found");
     }
 
-    const post = entries.items[0];
+    const post = entries.items[0] as any;
     // const currentTags = post.fields.tags || [];
     // Ensure tags is always an array
     const currentTags = Array.isArray(post.fields.tags) ? post.fields.tags : [];
