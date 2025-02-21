@@ -10,9 +10,9 @@ const Header = () => {
   const navItems = [
     { text: "Solutions", hasDropdown: true },
     { text: "Industries", hasDropdown: true },
-    { text: "Resources", href: "/Resources" },
-    { text: "Newsroom", href: "/Newsroom" },
-    { text: "Career", href: "/Career" },
+    { text: "Resources", href: "/resources" },
+    { text: "Newsroom", href: "/newsroom" },
+    { text: "Career", href: "/career" },
     { text: "About Us", hasDropdown: true },
   ];
 

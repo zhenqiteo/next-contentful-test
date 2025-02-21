@@ -56,16 +56,17 @@ export default function Footer() {
           <div className="py-8 sm:py-16 max-w-screen-2xl mx-auto flex flex-col gap-10 md:gap-4 px-5 h-full w-full justify-between">
             {/* Top section with logo and contact */}
             <div className="flex max-sm:flex-col justify-between items-start max-sm:gap-3">
-              <div>
+              <Link href="/">
                 <Image
                   src="/LOGO.svg"
                   alt="SUPCON"
                   width={150}
                   height={40}
+                  href="/"
                   className="h-8 md:h-11 w-auto"
                   priority
                 />
-              </div>
+              </Link>
               <div className="flex flex-col items-start sm:gap-1 md:gap-4">
                 <Link href="#" className="flex items-center gap-2">
                   <LinkEffect

@@ -78,7 +78,7 @@ const Header = () => {
     },
     {
       text: "Resources",
-      href: "/Resources",
+      href: "/resources",
     },
     {
       text: "Newsroom",
@@ -86,7 +86,7 @@ const Header = () => {
     },
     {
       text: "Career",
-      href: "/Career",
+      href: "/career",
     },
     {
       text: "About Us",

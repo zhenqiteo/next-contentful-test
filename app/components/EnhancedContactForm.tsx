@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import {
   BiMessageDetail, // General Request
@@ -98,10 +99,10 @@ const EnhancedContactForm = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 p-8 max-w-6xl mx-auto">
+    <div className="flex flex-col md:flex-row gap-20 p-8 max-w-6xl mx-auto">
       <div className="md:w-1/3">
-        <h1 className="text-4xl font-bold text-navy-900 mb-4">Contact Us</h1>
-        <p className="text-gray-600 mb-6">
+        <h1 className="text-4xl font-medium text-[#00205b] mb-8">Contact Us</h1>
+        <p className="text-[#00205b] mb-6">
           Let Us Know Which Team You'd Like To Connect With!
         </p>
 
@@ -110,7 +111,7 @@ const EnhancedContactForm = () => {
             <button
               key={id}
               onClick={() => setSelectedType(id)}
-              className={`w-full text-left px-4 py-3 rounded-lg flex items-center gap-3 transition-colors
+              className={`w-full font-poppins text-left border text-base font-normal px-4 py-3 rounded-lg flex items-center gap-3 transition-colors
                 ${
                   selectedType === id
                     ? "bg-gray-200 text-gray-900"
@@ -126,12 +127,14 @@ const EnhancedContactForm = () => {
 
       <div className="md:w-2/3">
         <div className="bg-white rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-6">Contact Information</h2>
+          <h2 className="text-[#00205b] text-base font-medium mb-6">
+            Contact Information
+          </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-normal text-gray-400 mb-1">
                   First Name
                 </label>
                 <input
@@ -139,13 +142,13 @@ const EnhancedContactForm = () => {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="w-full p-2 border rounded-md"
+                  className="w-full p-2 border-b-2"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-normal text-gray-400 mb-1">
                   Last Name
                 </label>
                 <input
@@ -160,7 +163,7 @@ const EnhancedContactForm = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-normal text-gray-400 mb-1">
                 Country
               </label>
               <select
@@ -242,7 +245,7 @@ const EnhancedContactForm = () => {
                 required
                 className="rounded"
               />
-              <label className="text-sm text-gray-600">
+              <label className="text-sm text-[#00205b]">
                 I agree to the privacy terms & conditions
               </label>
             </div>
@@ -290,7 +293,7 @@ const EnhancedContactForm = () => {
             <button
               type="submit"
               disabled={submitStatus.loading}
-              className={`mt-6 px-6 py-2 bg-black text-white rounded-md transition-colors ${
+              className={`mt-6 px-6 py-2 bg-black text-white text-base font-light rounded-full transition-colors ${
                 submitStatus.loading
                   ? "opacity-50 cursor-not-allowed"
                   : "hover:bg-gray-800"

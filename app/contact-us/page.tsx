@@ -1,9 +1,13 @@
 "use client";
 
-import EnhancedContactForm from "@/contact/page";
+import EnhancedContactForm from "@/components/EnhancedContactForm";
 
 import React from "react";
 
 export default function page() {
-  return <EnhancedContactForm />;
+  return (
+    <div className="bg-[#f2f2f2]">
+      <EnhancedContactForm />
+    </div>
+  );
 }
