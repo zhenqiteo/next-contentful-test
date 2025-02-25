@@ -8,9 +8,11 @@ import {
   BiStar, // Feedback
   BiRefresh, // CAPTCHA refresh
 } from "react-icons/bi";
+import CountryDropdown from "@/components/CountryDropdown";
 
 const EnhancedContactForm = () => {
   const [selectedType, setSelectedType] = useState("general");
+  const [country, setCountry] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -114,8 +116,8 @@ const EnhancedContactForm = () => {
               className={`w-full font-poppins text-left border text-base font-normal px-4 py-3 rounded-lg flex items-center gap-3 transition-colors
                 ${
                   selectedType === id
-                    ? "bg-gray-200 text-gray-900"
-                    : "bg-gray-50 text-gray-600 hover:bg-gray-100"
+                    ? "bg-gray-300 text-gray-900"
+                    : "bg-gray-50 text-gray-600 hover:bg-gray-300"
                 }`}
             >
               <Icon size={20} />
@@ -142,7 +144,7 @@ const EnhancedContactForm = () => {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="w-full p-2 border-b-2"
+                  className="w-full p-2 border-b"
                   required
                 />
               </div>
@@ -156,7 +158,7 @@ const EnhancedContactForm = () => {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="w-full p-2 border rounded-md"
+                  className="w-full p-2 border-b"
                   required
                 />
               </div>
@@ -166,7 +168,8 @@ const EnhancedContactForm = () => {
               <label className="block text-sm font-normal text-gray-400 mb-1">
                 Country
               </label>
-              <select
+              <CountryDropdown value={country} onChange={setCountry} />
+              {/* <select
                 name="country"
                 value={formData.country}
                 onChange={handleInputChange}
@@ -175,7 +178,6 @@ const EnhancedContactForm = () => {
               >
                 <option value="Singapore">Singapore</option>
                 {/* Add more countries as needed */}
-              </select>
             </div>
 
             <div>
@@ -293,10 +295,10 @@ const EnhancedContactForm = () => {
             <button
               type="submit"
               disabled={submitStatus.loading}
-              className={`mt-6 px-6 py-2 bg-black text-white text-base font-light rounded-full transition-colors ${
+              className={`mt-6 px-6 py-2 bg-black text-white text-base font-light rounded-full transition-colors text-[14px] md:text-[16px] ${
                 submitStatus.loading
                   ? "opacity-50 cursor-not-allowed"
-                  : "hover:bg-gray-800"
+                  : "hover:bg-white-100"
               }`}
             >
               {submitStatus.loading ? "Sending..." : "Send Message"}

@@ -1,4 +1,5 @@
 import React from "react";
+import Hero from "@/components/Hero";
 
 // Main About Page Component
 export default function ResourcesPage() {
@@ -9,6 +10,7 @@ export default function ResourcesPage() {
         Welcome to the resources page. Here you will find various materials and
         links to help you with your projects.
       </p>
+      {/* <Hero /> */}
     </main>
   );
 }
