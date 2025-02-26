@@ -18,7 +18,7 @@ const DropdownMenu = ({ items, isOpen }: DropdownMenuProps) => {
   return (
     <div
       className={`
-        absolute top-[calc(100%-0.1rem)] left-1/2 -translate-x-1/2 w-64
+        absolute top-[calc(100%-0.1rem)] left-1/2 -translate-x-1/2 w-80
         bg-white/10 backdrop-blur-md rounded-lg 
         shadow-lg transition-all duration-100
         ${

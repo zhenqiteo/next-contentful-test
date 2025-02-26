@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavItem from "./ui/NavItem";
 import ContactButton from "./ui/ContactButton";
-
+import { motion, AnimatePresence } from "framer-motion";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -110,12 +110,12 @@ const Header = () => {
     },
   ];
 
-  const headerStyle = {
-    background: scrolled
-      ? "rgb(0,0,0, 0.6)"
-      : "none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0)",
-    transition: "all 0.3s ease-in-out",
-  };
+  // const headerStyle = {
+  //   background: scrolled
+  //     ? "rgb(0,0,0, 0.6)"
+  //     : "none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0)",
+  //   transition: "all 0.3s ease-in-out",
+  // };
 
   const navStyle = {
     opacity: 1,
@@ -124,19 +124,49 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full z-[1000] py-5" style={headerStyle}>
+    <header className="fixed top-0 w-full z-[1000] py-5">
       <nav className="relative w-full flex max-w-full" style={navStyle}>
         <div className="max-w-screen-2xl mx-auto px-5 flex-1 flex items-center justify-between rounded-xl text-light">
           <Link href="/" aria-label="home link">
-            <Image
-              src="/logo.svg"
-              alt="Logo"
-              width={300}
-              height={200}
-              className="h-5 w-auto"
-              priority
-              style={{ color: "transparent" }}
-            />
+            <AnimatePresence mode="wait">
+              {scrolled ? (
+                <motion.div
+                  key="blue-logo"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Image
+                    src="/LOGO_blue.svg"
+                    alt="Logo blue and white"
+                    width={300}
+                    height={200}
+                    className="h-5 w-auto"
+                    priority
+                    style={{ color: "transparent" }}
+                  />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="white-logo"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Image
+                    src="/LOGO.svg"
+                    alt="Logo White"
+                    width={300}
+                    height={200}
+                    className="h-5 w-auto"
+                    priority
+                    style={{ color: "transparent" }}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </Link>
 
           <div className="max-lg:hidden">

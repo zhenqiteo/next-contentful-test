@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FaYoutube } from "react-icons/fa";
 import { LuMessageCircleMore } from "react-icons/lu";
 import LinkEffect from "./ui/LinkEffect";
-import { FiArrowUpRight } from "react-icons/fi";
+import { TfiArrowTopRight } from "react-icons/tfi";
 
 const data = [
   {
@@ -62,7 +62,7 @@ export default function Footer() {
           <div className="py-8 sm:py-16 max-w-screen-2xl mx-auto flex flex-col gap-10 md:gap-4 px-5 h-full w-full justify-between">
             {/* Top section with logo and contact */}
             <div className="flex max-sm:flex-col justify-between items-start max-sm:gap-3">
-              <Link href="/" className="hidden sm:block">
+              <Link href="/" className="max-lg:hidden">
                 <Image
                   src="/LOGO.svg"
                   alt="SUPCON"
@@ -80,26 +80,7 @@ export default function Footer() {
                     }
                     text={"CONTACT US"}
                   ></LinkEffect>
-                  <div
-                    data-svg-wrapper
-                    className="w-7 h-7 sm:w-5 sm:h-5 md:w-10 md:h-10"
-                  >
-                    <svg
-                      width="100%"
-                      height="100%"
-                      viewBox="0 0 28 28"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3 25L26 2M26 2H3M26 2V25"
-                        stroke="#F5F5F5"
-                        strokeWidth="3.44462"
-                        strokeLinecap="square"
-                      />
-                    </svg>
-                  </div>
-                  {/* <FiArrowUpRight className="text-xl sm:text-3xl md:text-4xl" /> */}
+                  <TfiArrowTopRight className="text-xl sm:text-3xl md:text-4xl" />
                 </Link>
                 <div className="flex gap-3 sm:gap-6 text-xl md:text-3xl">
                   <Link
@@ -155,7 +136,7 @@ export default function Footer() {
             {/* Bottom section with copyright and legal links */}
             <div className="flex gap-2 max-md:flex-col justify-between items-start sm:items-center pt-4 border-t border-[#F5F5F550]">
               <p className="text-xs">© 2025 SUPCON. All Rights Reserved.</p>
-              <div className="flex max-sm:flex-wrap gap-1 sm:gap-2 text-xs">
+              <div className="flex max-sm:flex-wrap gap-1 sm:gap-1 text-xs">
                 <Link href="#">
                   <LinkEffect
                     textClass={"p-1"}
