@@ -36,6 +36,14 @@ const officeData = [
     phone: "+86 400-887-6000",
     email: "singapore@supcon.com",
   },
+  {
+    id: 4,
+    country: "Kazakhstan",
+    image: "/images/kazakhstan-office.jpg",
+    address: "Almaty, Medeu District, Dostyk Ave., 192/2, Green Tower",
+    phone: "+7 776-170-8555",
+    email: "info.kz@supcon.com",
+  },
   // Add more offices as needed
 ];
 

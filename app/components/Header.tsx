@@ -93,7 +93,7 @@ const Header = () => {
       hasDropdown: true,
       dropdownItems: [
         {
-          label: "Our Story",
+          label: "Who We Are",
           href: "/about",
           description: "Learn about our journey",
         },
@@ -103,9 +103,14 @@ const Header = () => {
           description: "Meet our leadership team",
         },
         {
-          label: "Our offices",
+          label: "Our Offices",
           href: "/about/location",
-          description: "our global offices",
+          description: "Our global offices",
+        },
+        {
+          label: "Sustainability",
+          href: "/about/sustainability",
+          description: "Our commitment to sustainability",
         },
       ],
     },

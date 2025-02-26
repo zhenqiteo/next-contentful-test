@@ -146,8 +146,8 @@ export default function Footer() {
 
             {/* Bottom section with copyright and legal links */}
             <div className="flex gap-2 max-md:flex-col justify-between items-start sm:items-center pt-4 border-t border-[#F5F5F550]">
-              <p className="text-sm">© 2024 SUPCON. All Rights Reserved</p>
-              <div className="flex max-sm:flex-wrap gap-2 sm:gap-8 text-sm">
+              <p className="text-xs">© 2025 SUPCON. All Rights Reserved.</p>
+              <div className="flex max-sm:flex-wrap gap-2 sm:gap-8 text-xs">
                 <Link href="#">
                   <LinkEffect
                     textClass={"p-1"}
