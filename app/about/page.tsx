@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import VRSection from "@/components/VRSection";
+import RegionDropdown from "@/components/RegionDropdown";
 
 // The metadata helps with SEO and social sharing
 export const metadata: Metadata = {

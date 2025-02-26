@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import RegionDropdown from "@/components/RegionDropdown";
+import LocationSection from "./LocationSection";
 
 export const metadata: Metadata = {
   title: "About SUPCON | Industrial Automation Solutions",
@@ -50,98 +52,60 @@ const officeData = [
 // Previous components remain the same (Hero, CoreValues, GlobalPresence)
 // ...
 
-// New Location Components
-const LocationHeader = () => {
+// Location Components
+const LocationHeader: React.FC = () => {
   return (
     <section className="bg-gray-200 py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-semibold mb-6">Our Location</h2>
         <p className="text-gray-700 max-w-3xl">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip.
+          SUPCON has established a global network of offices and partners to
+          provide local support and expertise to our customers worldwide. Our
+          presence spans across Asia-Pacific, Middle East, Africa, and Europe,
+          enabling us to deliver timely solutions and services regardless of
+          location.
         </p>
       </div>
     </section>
   );
 };
 
-const OfficeCategories = () => {
+const OfficeCategories: React.FC = () => {
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 gap-x-32 gap-y-8 mb-16">
-          <div className="grid grid-cols-2">
-            <Link href="#offices">
-              <div className="cursor-pointer">
-                <h3 className="text-2xl font-medium text-gray-400 mb-4 hover:border-b-2 hover:border-gray-900 pb-2">
-                  Corporate Offices
-                </h3>
-              </div>
-            </Link>
-            <Link href="#5s-stores">
-              <div className="cursor-pointer">
-                <h3 className="text-2xl font-medium text-gray-900 mb-4 border-b-2 border-gray-900 pb-2">
-                  5S Retail Stores
-                </h3>
-              </div>
-            </Link>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-32 gap-y-8 mb-16">
+          <Link href="#offices">
+            <div className="cursor-pointer">
+              <h3 className="text-2xl font-medium text-gray-900 mb-4 hover:border-b-2 hover:border-gray-900 pb-2">
+                Corporate Offices
+              </h3>
+            </div>
+          </Link>
+          <Link href="#5s-stores">
+            <div className="cursor-pointer">
+              <h3 className="text-2xl font-medium text-gray-900 mb-4 hover:border-b-2 hover:border-gray-900 pb-2">
+                5S Retail Stores
+              </h3>
+            </div>
+          </Link>
         </div>
 
         <p className="text-gray-700 mb-16">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-          do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip.
+          Our 5S Retail Stores serve as innovation hubs and customer experience
+          centers, showcasing SUPCON's latest technologies and solutions. These
+          locations offer hands-on demonstrations, training sessions, and
+          technical support to help our customers maximize the value of their
+          SUPCON systems and solutions.
         </p>
 
-        <div>
-          <h3 className="text-3xl font-medium mb-8">Asia-Pacific (8)</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-3">
+            <RegionDropdown />
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {officeData.map((office) => (
-              <div key={office.id} className="space-y-4">
-                <div className="relative h-64 w-full">
-                  <Image
-                    src={office.image}
-                    alt={`SUPCON ${office.country} Office`}
-                    fill
-                    className="object-cover rounded-lg"
-                  />
-                </div>
-                <h4 className="text-2xl text-blue-900 font-semibold">
-                  {office.country}
-                </h4>
-                <p className="text-gray-700">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip.
-                </p>
-                <div className="space-y-2">
-                  <h5 className="font-medium text-blue-900">Contact</h5>
-                  <div className="space-y-1">
-                    <p className="text-sm">
-                      <span className="font-medium text-blue-900">A</span>{" "}
-                      {office.address}
-                    </p>
-                    <p className="text-sm">
-                      <span className="font-medium text-blue-900">T</span>{" "}
-                      {office.phone}
-                    </p>
-                    <p className="text-sm">
-                      <span className="font-medium text-blue-900">E</span>{" "}
-                      {office.email}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="">
+            {/* This area is dynamically populated by the RegionDropdown component */}
           </div>
         </div>
       </div>
@@ -151,12 +115,12 @@ const OfficeCategories = () => {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[#f2f2f2]">
       {/* <Hero />
       <CoreValues />
       <GlobalPresence /> */}
       <LocationHeader />
-      <OfficeCategories />
+      <LocationSection />
     </main>
   );
 }
