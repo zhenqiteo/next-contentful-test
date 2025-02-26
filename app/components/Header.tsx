@@ -28,25 +28,19 @@ const Header = () => {
       hasDropdown: true,
       dropdownItems: [
         {
-          label: "Universal Control System",
-          href: "/solutions/ucs",
-          description: "NYX THE ALL AMAZING UCS",
+          label: "Next Generation Automation",
+          href: "/solutions/next-generation-automation",
+          description: "NYX OUR ALL AMAZING UCS",
         },
         {
-          label: "TPT",
-          href: "/solutions/tpt",
-          description:
-            "Tailored solutions for predictive analytics and maintenance",
+          label: "Automation & Instrumentation",
+          href: "/solutions/automation-and-instrumentation",
+          description: "Tailored Solutions for Automation and Instrumentation",
         },
         {
-          label: "Robotic Patrol",
-          href: "/solutions/industrial-robots",
-          description: "For industrial safety and efficiency",
-        },
-        {
-          label: "Industrial Simulation",
-          href: "/solutions/industrial-simulation",
-          description: "For training and process optimization",
+          label: "Digital Industry",
+          href: "/solutions/digital-industry",
+          description: "Running Digital Transformation in the Process Industry",
         },
       ],
     },
@@ -86,7 +80,7 @@ const Header = () => {
     },
     {
       text: "Career",
-      href: "/career",
+      href: "https://www.linkedin.com/company/%E4%B8%AD%E6%8E%A7%E6%8A%80%E6%9C%AF/jobs/",
     },
     {
       text: "About Us",
@@ -105,7 +99,7 @@ const Header = () => {
         {
           label: "Our Offices",
           href: "/about/location",
-          description: "Our global offices",
+          description: "Our Global Offices",
         },
         {
           label: "Sustainability",

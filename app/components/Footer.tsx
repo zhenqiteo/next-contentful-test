@@ -22,9 +22,15 @@ const data = [
   {
     title: "Solutions",
     links: [
-      { name: "Next Gen Automation", href: "#" },
-      { name: "Control & Instrumentation", href: "#" },
-      { name: "Digital Solutions", href: "#" },
+      {
+        name: "Next Gen Automation",
+        href: "/solutions/next-generation-automation",
+      },
+      {
+        name: "Control & Instrumentation",
+        href: "/solutions/automation-and-instrumentation",
+      },
+      { name: "Digital Solutions", href: "/solutions/digital-industry" },
     ],
   },
   {
@@ -56,13 +62,12 @@ export default function Footer() {
           <div className="py-8 sm:py-16 max-w-screen-2xl mx-auto flex flex-col gap-10 md:gap-4 px-5 h-full w-full justify-between">
             {/* Top section with logo and contact */}
             <div className="flex max-sm:flex-col justify-between items-start max-sm:gap-3">
-              <Link href="/">
+              <Link href="/" className="hidden sm:block">
                 <Image
                   src="/LOGO.svg"
                   alt="SUPCON"
                   width={150}
                   height={40}
-                  href="/"
                   className="h-8 md:h-11 w-auto"
                   priority
                 />
@@ -75,10 +80,13 @@ export default function Footer() {
                     }
                     text={"CONTACT US"}
                   ></LinkEffect>
-                  <div data-svg-wrapper>
+                  <div
+                    data-svg-wrapper
+                    className="w-7 h-7 sm:w-5 sm:h-5 md:w-10 md:h-10"
+                  >
                     <svg
-                      width="28"
-                      height="28"
+                      width="100%"
+                      height="100%"
                       viewBox="0 0 28 28"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +155,7 @@ export default function Footer() {
             {/* Bottom section with copyright and legal links */}
             <div className="flex gap-2 max-md:flex-col justify-between items-start sm:items-center pt-4 border-t border-[#F5F5F550]">
               <p className="text-xs">© 2025 SUPCON. All Rights Reserved.</p>
-              <div className="flex max-sm:flex-wrap gap-2 sm:gap-8 text-xs">
+              <div className="flex max-sm:flex-wrap gap-1 sm:gap-2 text-xs">
                 <Link href="#">
                   <LinkEffect
                     textClass={"p-1"}
