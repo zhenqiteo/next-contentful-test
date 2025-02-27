@@ -131,14 +131,14 @@ const Header = () => {
             <AnimatePresence mode="wait">
               {scrolled ? (
                 <motion.div
-                  key="blue-logo"
+                  key="white-logo"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <Image
-                    src="/LOGO_blue.svg"
+                    src="/LOGO.svg"
                     alt="Logo blue and white"
                     width={300}
                     height={200}
@@ -149,14 +149,14 @@ const Header = () => {
                 </motion.div>
               ) : (
                 <motion.div
-                  key="white-logo"
+                  key="blue-logo"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <Image
-                    src="/LOGO.svg"
+                    src="/LOGO_blue.svg"
                     alt="Logo White"
                     width={300}
                     height={200}

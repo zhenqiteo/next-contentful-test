@@ -14,9 +14,17 @@ export const metadata: Metadata = {
 const Hero = () => {
   return (
     <div className="relative">
-      <div className="relative h-screen min-h-[800px] bg-blue-600 overflow-hidden">
-        {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-500 to-blue-600" />
+      <div className="relative h-screen min-h-[800px] overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/supcon_dji_5.jpg"
+          alt="SUPCON Building in Hangzhou, China"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40" />
 
         <div className="relative container mx-auto px-4 pt-24 lg:pt-32">
           <div className="max-w-4xl">
@@ -37,7 +45,8 @@ const Hero = () => {
 
         <div className="absolute bottom-0 left-0 right-0 bg-white">
           <div className="container mx-auto px-4 py-12">
-            <div className="flex flex-col md:flex-row items-center gap-8">
+            {/* Trusted Partner Section */}
+            {/* <div className="flex flex-col md:flex-row items-center gap-10 mb-16">
               <div className="relative w-full md:w-1/2 h-[300px] md:h-[400px]">
                 <Image
                   src="/images/industrial-stock-1.jpg"
@@ -66,6 +75,58 @@ const Hero = () => {
                   across 50 countries, empowering businesses across key
                   industries like Oil & Gas, Petrochemical, Power, Chemical and
                   more.
+                </p>
+              </div>
+            </div> */}
+
+            {/* Vision Section */}
+            {/* <div className="flex flex-col md:flex-row items-center gap-10 mb-16">
+              <div className="w-full md:w-1/2">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  Our Vision
+                </h2>
+                <p className="text-gray-700">
+                  Leading Industrial AI to Sustainable Growth. We envision a
+                  future where intelligent manufacturing drives sustainable
+                  development and innovation across industries worldwide.
+                  Through cutting-edge AI technology and automation solutions,
+                  we aim to create a more efficient, sustainable, and
+                  interconnected industrial ecosystem.
+                </p>
+              </div>
+              <div className="relative w-full md:w-1/2 h-[300px] md:h-[400px]">
+                <Image
+                  src="/images/stock_photo_1.jpg"
+                  alt="SUPCON's vision for the future"
+                  fill
+                  className="rounded-lg shadow-lg object-cover"
+                  priority
+                />
+              </div>
+            </div> */}
+
+            {/* Mission Section */}
+            <div className="flex flex-col md:flex-row items-center gap-10">
+              <div className="relative w-full md:w-1/2 h-[300px] md:h-[400px]">
+                <Image
+                  src="/images/supcon_dji_2.jpg"
+                  alt="SUPCON's mission in action"
+                  fill
+                  className="rounded-lg shadow-lg object-cover"
+                  priority
+                />
+              </div>
+              <div className="w-full md:w-1/2">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  Our Mission
+                </h2>
+                <p className="text-gray-700">
+                  Elevate Industry Intelligence, Drive Customer Success. We are
+                  dedicated to empowering businesses with intelligent solutions
+                  that optimize operations, enhance productivity, and foster
+                  innovation. Through our commitment to excellence and
+                  customer-centric approach, we strive to be the catalyst for
+                  digital transformation in industrial sectors globally.
                 </p>
               </div>
             </div>
