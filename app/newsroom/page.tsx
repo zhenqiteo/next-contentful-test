@@ -14,12 +14,12 @@ export default async function NewsroomPage() {
     });
 
     return (
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 bg-[#f2f2f2]">
         <h1 className="text-4xl font-bold mb-8 font-poppins">News and Media</h1>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {response.items.map((post: any) => (
             <Link href={`/posts/${post.fields.slug}`} key={post.sys.id}>
-              <article className="border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <article className="border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow h-full">
                 {post.fields.coverImage?.fields?.file?.url && (
                   <img
                     src={`https:${post.fields.coverImage.fields.file.url}`}
