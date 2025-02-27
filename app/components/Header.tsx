@@ -120,7 +120,7 @@ const Header = () => {
   const navStyle = {
     opacity: 1,
     transform: "none",
-    color: scrolled ? "white" : "inherit", // Add this line to change color when scrolled
+    // color: scrolled ? "white" : "inherit", // Add this line to change color when scrolled
   };
 
   return (
