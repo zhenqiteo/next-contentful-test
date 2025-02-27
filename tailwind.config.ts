@@ -14,7 +14,24 @@ export default {
         sans: ["var(--font-inter)"],
         poppins: ["var(--font-poppins)"],
       },
-      colors: colors,
+      colors: {
+        ...colors,
+        primary: {
+          DEFAULT: "#00205B", // Deep blue
+          light: "#35AFE6",
+          dark: "#00205B",
+        },
+        secondary: {
+          DEFAULT: "#059669", // Emerald green
+          light: "#10B981",
+          dark: "#047857",
+        },
+        border: {
+          light: "#E5E7EB",
+          DEFAULT: "#D1D5DB",
+          dark: "#9CA3AF",
+        },
+      },
     },
   },
   future: {
