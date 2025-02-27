@@ -55,16 +55,32 @@ const officeData = [
 // Location Components
 const LocationHeader: React.FC = () => {
   return (
-    <section className="bg-gray-200 py-16">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-semibold mb-6">Our Location</h2>
-        <p className="text-gray-700 max-w-3xl">
-          SUPCON has established a global network of offices and partners to
-          provide local support and expertise to our customers worldwide. Our
-          presence spans across Asia-Pacific, Middle East, Africa, and Europe,
-          enabling us to deliver timely solutions and services regardless of
-          location.
-        </p>
+    <section className="relative min-h-[550px]">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/supcon_dji_7.jpg" // Make sure to add this image to your public folder
+          alt="SUPCON Global Presence"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+
+      <div className="relative z-10 py-32">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-semibold mb-6 text-white">
+            Our Location
+          </h2>
+          <p className="text-gray-100 max-w-3xl">
+            SUPCON has established a global network of offices and partners to
+            provide local support and expertise to our customers worldwide. Our
+            presence spans across Asia-Pacific, Middle East, Africa, and Europe,
+            enabling us to deliver timely solutions and services regardless of
+            location.
+          </p>
+        </div>
       </div>
     </section>
   );
