@@ -17,7 +17,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-[1000] py-5">
+    <header className="fixed top-0 left-0 w-full z-[1000] py-5 bg-transparent">
       <nav className="relative w-full flex max-w-full">
         <div className="max-w-screen-2xl mx-auto px-5 flex-1 flex items-center justify-between rounded-xl text-light">
           <Link href="/" aria-label="Home">

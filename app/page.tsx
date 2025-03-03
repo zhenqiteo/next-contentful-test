@@ -2,26 +2,14 @@
 import { createClient } from "contentful";
 import Link from "next/link";
 import { useState } from "react";
-export default function Home() {
+import HomePageHero from "./components/HomePageHero";
+
+export default function HomePage() {
   const [activeIndustry, setActiveIndustry] = useState(0);
 
   return (
     <main>
-      {/* Hero Video Banner - Uncomment when ready
-      <section className="relative w-full h-[80vh]">
-        <video 
-          className="w-full h-full object-cover"
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-        >
-          <source src="/your-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </section>
-      */}
-
+      <HomePageHero />
       {/* Trusted Companies Logo Section */}
       <section className="py-12 bg-white overflow-hidden">
         <div className="container mx-auto px-4 mb-8">
