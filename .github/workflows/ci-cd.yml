@@ -1,0 +1,74 @@
+# File: .github/workflows/ci-cd.yml
+name: Website CI/CD
+
+on:
+  push:
+    branches: [main, develop, "feature/**"]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+        # If you don't have linting set up yet, you can comment this out
+
+      - name: Build
+        run: npm run build
+
+      # Optional: Add tests when you have them
+      # - name: Test
+      #   run: npm test
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Production
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "Deploying to production environment"
+          # Add your production deployment command here
+          # Examples:
+          # - npm run deploy
+          # - firebase deploy --only hosting
+          # - aws s3 sync ./build s3://your-production-bucket/
+
+      - name: Deploy to Staging
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          echo "Deploying to staging environment"
+          # Add your staging deployment command here
+          # Examples:
+          # - npm run deploy:staging
+          # - firebase deploy --only hosting:staging
+          # - aws s3 sync ./build s3://your-staging-bucket/
