@@ -5,6 +5,7 @@
 :root {
   --font-inter: "Inter", sans-serif;
   --font-poppins: "Poppins", sans-serif;
+  --color-primary-blue: #0057e3;
 }
 
 body {

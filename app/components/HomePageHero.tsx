@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { IoIosArrowDroprightCircle } from "react-icons/io";
 
 const HomePageHero = () => {
   return (
@@ -17,9 +18,9 @@ const HomePageHero = () => {
       {/* Content Container */}
       <div className="relative z-10 flex flex-col justify-center h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Tag line */}
-        <p className="text-blue-400 font-semibold mb-4">
+        <h4 className="text-white font-light text-lg mb-4 font-poppins">
           Next Generation Automation
-        </p>
+        </h4>
 
         {/* Main Heading */}
         <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-tight mb-6">
@@ -39,16 +40,16 @@ const HomePageHero = () => {
         <div className="flex flex-wrap gap-4">
           <Link
             href="/request-demo"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-medium transition-colors"
+            className="bg-[var(--color-primary-blue)] hover:bg-white hover:text-[var(--color-primary-blue)] text-white px-8 py-3 rounded-full font-normal transition-colors"
           >
             Request a demo
           </Link>
           <Link
             href="/learn-more"
-            className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-3 rounded-md font-medium transition-colors flex items-center gap-2"
+            className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-normal transition-colors flex items-center gap-2"
           >
-            Learn more
-            <svg
+            Learn more <IoIosArrowDroprightCircle size={22} />
+            {/* <svg
               className="w-5 h-5"
               fill="none"
               stroke="currentColor"
@@ -60,7 +61,7 @@ const HomePageHero = () => {
                 strokeWidth={2}
                 d="M9 5l7 7-7 7"
               />
-            </svg>
+            </svg> */}
           </Link>
         </div>
       </div>

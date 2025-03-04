@@ -170,7 +170,7 @@ const Header = () => {
           </Link>
 
           <div className="max-lg:hidden">
-            <div className="flex items-center gap-0 font-medium text-xs xl:text-sm">
+            <div className="flex items-center gap-0 font-normal text-base xl:text-sm">
               {navItems.map((item, index) => (
                 <NavItem
                   key={index}
