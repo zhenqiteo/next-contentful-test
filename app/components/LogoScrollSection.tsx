@@ -17,7 +17,7 @@ const LogoScrollSection = ({
     highlight: "250+",
     suffix: " Leading Companies",
   },
-  logoCount,
+  logoCount = 6,
   logoWidth = "192px",
   logoHeight = "h-[72px]",
 }: LogoScrollSectionProps) => {
