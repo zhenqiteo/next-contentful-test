@@ -3,6 +3,7 @@ import { createClient } from "contentful";
 import Link from "next/link";
 import { useState } from "react";
 import HomePageHero from "./components/HomePageHero";
+import StatisticsSection from "./components/StatisticsSection";
 
 export default function HomePage() {
   const [activeIndustry, setActiveIndustry] = useState(0);
@@ -10,6 +11,7 @@ export default function HomePage() {
   return (
     <main>
       <HomePageHero />
+      <StatisticsSection />
       {/* Trusted Companies Logo Section */}
       <section className="py-12 bg-white overflow-hidden">
         <div className="container mx-auto px-4 mb-8">
