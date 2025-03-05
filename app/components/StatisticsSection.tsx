@@ -1,17 +1,51 @@
-import { FC } from "react";
+import { FC, useState, useEffect, useRef } from "react";
 import { IoEllipse } from "react-icons/io5";
 import CTAButton from "./ui/CTAButton";
+import { useInView } from "react-intersection-observer";
 
 interface StatNumberProps {
-  number: string;
+  endNumber: number;
+  suffix?: string;
   description: string;
 }
 
-const StatNumber: FC<StatNumberProps> = ({ number, description }) => {
+const StatNumber: FC<StatNumberProps> = ({
+  endNumber,
+  suffix = "+",
+  description,
+}) => {
+  const [count, setCount] = useState(0);
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: false,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      const duration = 200; // Animation duration in milliseconds
+      const steps = 30; // Steps per second
+      const increment = endNumber / ((duration / 1000) * steps);
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= endNumber) {
+          setCount(endNumber);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(current));
+        }
+      }, 1000 / steps);
+
+      return () => clearInterval(timer);
+    }
+  }, [inView, endNumber]);
+
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div ref={ref} className="flex flex-col justify-center items-center">
       <div className="h-[91px] text-center font-poppins text-[104px] font-light text-[var(--sib-blue-main,#0057E3)] tracking-[-2.08px] mb-4">
-        {number}
+        {count}
+        {suffix}
       </div>
       <div className="mt-4 text-base text-[var(--color-SIB-black)] max-w-[211px] leading-relaxed font-normal font-sans">
         {description}
@@ -23,19 +57,22 @@ const StatNumber: FC<StatNumberProps> = ({ number, description }) => {
 const StatisticsSection: FC = () => {
   const stats: StatNumberProps[] = [
     {
-      number: "50+",
+      endNumber: 50,
       description: "Countries, Enabling Global Digital Transformation",
     },
     {
-      number: "30k+",
+      endNumber: 30,
+      suffix: "k+",
       description: "Customers with Next-Gen Industrial Intelligence",
     },
     {
-      number: "100k+",
+      endNumber: 100,
+      suffix: "k+",
       description: "Deployments Driving AI-Powered Smart Factories",
     },
     {
-      number: "4k+",
+      endNumber: 4,
+      suffix: "k+",
       description: "AI-Powered Smart Plant Projects",
     },
   ];
@@ -87,7 +124,8 @@ const StatisticsSection: FC = () => {
           {stats.map((stat, index) => (
             <StatNumber
               key={index}
-              number={stat.number}
+              endNumber={stat.endNumber}
+              suffix={stat.suffix}
               description={stat.description}
             />
           ))}
