@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import HomePageHero from "./components/HomePageHero";
 import StatisticsSection from "./components/StatisticsSection";
-
+import LogoScrollSection from "./components/LogoScrollSection";
 export default function HomePage() {
   const [activeIndustry, setActiveIndustry] = useState(0);
 
@@ -13,45 +13,8 @@ export default function HomePage() {
       <HomePageHero />
       <StatisticsSection />
       {/* Trusted Companies Logo Section */}
-      <section className="py-12 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 mb-8">
-          <h2 className="text-center text-3xl font-semibold mb-8">
-            Trusted By 250+ Leading Companies
-          </h2>
-        </div>
-        <div className="relative">
-          <div className="flex animate-scroll">
-            {/* First set of logos */}
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((index) => (
-              <div
-                key={`logo-${index}`}
-                className="flex-shrink-0 w-[200px] mx-8 flex items-center justify-center"
-              >
-                <img
-                  src={`/placeholder-logo-${index}.png`}
-                  alt={`Company ${index}`}
-                  className="h-12 w-auto grayscale hover:grayscale-0 transition-all"
-                />
-              </div>
-            ))}
-            {/* Duplicate set for seamless scrolling */}
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((index) => (
-              <div
-                key={`logo-duplicate-${index}`}
-                className="flex-shrink-0 w-[200px] mx-8 flex items-center justify-center"
-              >
-                <img
-                  src={`/placeholder-logo-${index}.png`}
-                  alt={`Company ${index}`}
-                  className="h-12 w-auto grayscale hover:grayscale-0 transition-all"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <LogoScrollSection logoCount={6} />
 
-      {/* Solutions Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-sm uppercase tracking-wider mb-2">Solutions</h2>
