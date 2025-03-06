@@ -8,7 +8,9 @@ import LogoScrollSection from "./components/LogoScrollSection";
 import StatementSection from "./components/StatementSection";
 import Divider from "./components/ui/Divider";
 import IndustriesSection from "./components/IndustriesSection";
+import CTASection from "./components/CTASection";
 
+// Create a layout wrapper component in the same file or as a separate component
 // Create a layout wrapper component in the same file or as a separate component
 const SectionWrapper = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   return (
@@ -33,6 +35,7 @@ export default function HomePage() {
       <SectionWrapper>
         <IndustriesSection />
       </SectionWrapper>
+        <CTASection />
     </main>
   );
 }
