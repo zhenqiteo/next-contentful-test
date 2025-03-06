@@ -28,9 +28,11 @@ export default function HomePage() {
         <StatisticsSection />
         <StatementSection />
         <Divider />
-        <IndustriesSection />
       </SectionWrapper>
       <LogoScrollSection logoCount={6} />
+      <SectionWrapper>
+        <IndustriesSection />
+      </SectionWrapper>
     </main>
   );
 }

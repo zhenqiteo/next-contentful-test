@@ -5,6 +5,7 @@ import Image from "next/image";
 import SectionBadge from "./ui/SectionBadge";
 import CTAButton from "./ui/CTAButton";
 import Divider from "./ui/Divider";
+import { useRef } from "react";
 
 interface Industry {
   title: string;
@@ -38,6 +39,23 @@ const industries: Industry[] = [
 ];
 
 const IndustriesSection = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 440 + 24; // card width + gap
+      const currentScroll = scrollContainerRef.current.scrollLeft;
+      const newScroll = direction === 'left' 
+        ? currentScroll - scrollAmount 
+        : currentScroll + scrollAmount;
+      
+      scrollContainerRef.current.scrollTo({
+        left: newScroll,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,9 +87,13 @@ const IndustriesSection = () => {
         
         <Divider className="bg-[#17171B]" />
 
-        {/* Scrolling Industries */}
+        {/* Scrolling Industries with Bottom Arrows */}
         <div className="relative">
-          <div className="overflow-x-auto scrollbar-hide">
+          {/* Scrolling Container */}
+          <div 
+            ref={scrollContainerRef}
+            className="overflow-x-auto scrollbar-hide no-scrollbar [-webkit-scrollbar]:hidden"
+          >
             <div className="flex space-x-6 pb-4">
               {industries.map((industry, index) => (
                 <Link 
@@ -114,6 +136,34 @@ const IndustriesSection = () => {
                 </Link>
               ))}
             </div>
+          </div>
+
+          {/* Navigation Arrows at Bottom */}
+          <div className="hidden lg:flex justify-end gap-4 mt-8">
+            <button 
+              onClick={() => scroll('left')}
+              className="p-2 hover:opacity-100 transition-opacity"
+              aria-label="Scroll left"
+            >
+              <Image 
+                src="/ui/left_arrow.png"
+                alt="Scroll left"
+                width={40}
+                height={40}
+              />
+            </button>
+            <button 
+              onClick={() => scroll('right')}
+              className="p-2 hover:opacity-75 transition-opacity"
+              aria-label="Scroll right"
+            >
+              <Image 
+                src="/ui/right_arrow.png"
+                alt="Scroll right"
+                width={40}
+                height={40}
+              />
+            </button>
           </div>
         </div>
       </div>
