@@ -92,7 +92,7 @@ const StatisticsSection: FC = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-medium">
+      <div className="relative z-10 font-medium">
         <div className="mb-16">
           <span className="text-[var(--color-SIB-black)] text-base font-poppins flex items-center gap-2">
             <svg

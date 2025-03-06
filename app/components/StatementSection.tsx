@@ -42,31 +42,29 @@ const StatementSection = () => {
   ];
 
   return (
-    <section className="py-20 min-h-full">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20">
         {/* Grid Container */}
         <div
           className={`
           grid
-          grid-cols-1 gap-8                    /* Mobile: single column */
-          md:grid-cols-12 md:grid-rows-[auto_auto_auto] md:gap-12  /* Desktop: 12 columns */
-          min-h-screen
+          grid-cols-1 gap-4                  /* Mobile: single column */
+          md:grid-cols-6 md:grid-rows-[1fr_1fr_2fr] /* Desktop: 4 columns */
         `}
         >
           {/* Top Image: spans 8 columns */}
-          <div className="md:col-span-8 md:col-start-2 relative h-[300px] md:h-[417px]">
+          <div className="w-full md:col-start-1 md:col-span-4 relative aspect-[1015/417]">
             <Image
               src={images[0].src}
               alt={images[0].alt}
               fill
               className="object-contain"
-              sizes="(max-width: 768px) 100vw, 66vw"
+              sizes="(max-width: 768px) 100vw, 75vw"
               priority
             />
           </div>
 
           {/* Tagline: spans full width */}
-          <div className="md:col-span-full md:row-start-2">
+          <div className="md:col-span-full h-full flex items-center justify-center px-8">
             <h2 className="text-center text-2xl md:text-6xl font-medium">
               <span className="text-[var(--color-SIB-blue)]">Elevate</span>{" "}
               Industrial Intelligence,
@@ -75,28 +73,29 @@ const StatementSection = () => {
             </h2>
           </div>
 
-          {/* Bottom Images */}
-          <div className="md:col-span-5 md:col-start-7 md:row-start-3 relative h-[300px] md:h-[440px]">
+          {/* Right Image - takes up last column */}
+          <div className="w-full h-full md:col-start-5 md:col-span-2 md:row-start-3 relative aspect-square">
             <Image
               src={images[1].src}
               alt={images[1].alt}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 40vw"
+              width={440}
+              height={440}
+              className="w-full h-auto object-contain"
+              sizes="(max-width: 768px) 50vw, 25vw"
             />
           </div>
 
-          <div className="md:col-span-6 md:col-start-2 md:row-start-[3.5] relative h-[300px] md:h-[447px]">
+          <div className="w-full h-full md:col-start-1 md:col-span-3 md:row-start-3 md:translate-y-1/3 relative aspect-[670/447]">
             <Image
               src={images[2].src}
               alt={images[2].alt}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              width={670}
+              height={447}
+              className="w-full h-auto object-contain"
+              sizes="(max-width: 768px) 50vw, 50vw"
             />
           </div>
         </div>
-      </div>
     </section>
   );
 };
