@@ -17,7 +17,7 @@ const CTAButton = ({ text, href, className = "" }: CTAButtonProps) => {
       className={`max-lg:hidden ${className}`}
       aria-label={text}
     >
-      <button className="group flex items-center gap-2 h-11 bg-[var(--color-SIB-blue)] text-white rounded-full px-6 hover:bg-white hover:text-[var(--color-SIB-blue)] hover:border-[1px] hover:border-[var(--color-SIB-blue)] transition-all duration-300">
+      <button className="group flex items-center gap-2 h-11 bg-[var(--color-SIB-blue)] text-white rounded-full px-6 hover:bg-[var(--color-SIB-blue-hover)] hover:text-slate-100 hover:border-[1px] transition-all duration-200">
         <span className="font-sans text-base font-normal">{text}</span>
         {/* <MdArrowForwardIos size={22} /> */}
         <svg

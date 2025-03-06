@@ -2,7 +2,7 @@ import { FC, useState, useEffect, useRef } from "react";
 import { IoEllipse } from "react-icons/io5";
 import CTAButton from "./ui/CTAButton";
 import { useInView } from "react-intersection-observer";
-
+import SectionBadge from "./ui/SectionBadge";
 interface StatNumberProps {
   endNumber: number;
   suffix?: string;
@@ -94,18 +94,7 @@ const StatisticsSection: FC = () => {
       {/* Content */}
       <div className="relative z-10 font-medium">
         <div className="mb-16">
-          <span className="text-[var(--color-SIB-black)] text-base font-poppins flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="8"
-              height="8"
-              viewBox="0 0 8 8"
-              fill="none"
-            >
-              <circle cx="4" cy="4" r="4" fill="#0057E3" />
-            </svg>
-            About SUPCON
-          </span>
+          <SectionBadge text="About SUPCON" />
           <h1 className="mt-4 text-[56px] leading-[64px]">
             Leading{" "}
             <span className="text-[var(--color-SIB-blue)]">Industrial AI</span>{" "}
