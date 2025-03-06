@@ -5,7 +5,7 @@ interface SectionBadgeProps {
   
   const SectionBadge = ({ text, className = "" }: SectionBadgeProps) => {
     return (
-      <span className={`text-[var(--color-SIB-black)] text-base font-poppins flex items-center gap-2 ${className}`}>
+      <span className={`text-[var(--color-SIB-black)] text-base font-poppins flex items-center font-medium gap-2 ${className}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="8"
