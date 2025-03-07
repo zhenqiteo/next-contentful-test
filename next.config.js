@@ -2,6 +2,7 @@
 const nextConfig = {
   // output: "export", // Comment out or remove this line for dev
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

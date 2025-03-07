@@ -21,7 +21,6 @@ const SectionWrapper = ({ children, className = "" }: { children: React.ReactNod
 };
 
 export default function HomePage() {
-  const [activeIndustry, setActiveIndustry] = useState(0);
 
   return (
     <main>
