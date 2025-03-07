@@ -4,7 +4,7 @@ import CTAButton from "./ui/CTAButton";
 
 const CTASection = () => {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full max-h-[70vh] md:max-h-[40vh] overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <video
@@ -25,12 +25,11 @@ const CTASection = () => {
 
       {/* Centered Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-4">
-        <h2 className="text-5xl md:text-6xl font-medium mb-6">
-          Transform Your Industrial Future
+        <h2 className="text-[24px] md:text-[32px] lg:text-[40px] xl:text-[48px] 2xl:text-[56px] font-normal mb-6 leading-[125%]">
+          Kickstart Your Digitalization Journey by<br />
+          Harnessing the Power of AI to<br />
+          Optimize Your Operations
         </h2>
-        <p className="text-xl md:text-2xl mb-10 max-w-2xl">
-          Experience the power of AI-driven industrial intelligence
-        </p>
         <CTAButton text="Contact Us" href="/contact" className="text-white" />
       </div>
     </section>

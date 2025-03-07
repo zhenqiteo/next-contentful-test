@@ -14,7 +14,7 @@ import CTASection from "./components/CTASection";
 // Create a layout wrapper component in the same file or as a separate component
 const SectionWrapper = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   return (
-    <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
+    <div className={`mx-auto px-4 sm:px-6 lg:px-10 ${className}`}>
       {children}
     </div>
   );
