@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
+import CTAButton from "./ui/CTAButton";
 
 const HomePageHero = () => {
   return (
@@ -15,54 +16,53 @@ const HomePageHero = () => {
         }}
       />
 
-      {/* Content Container */}
-      <div className="relative z-10 flex flex-col justify-center h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Tag line */}
-        <h4 className="text-white font-light text-lg mb-4 font-poppins">
-          Next Generation Automation
-        </h4>
+      {/* Content Container - Updated with grid layout */}
+      <div className="relative z-10 flex items-end pb-24 h-full w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-3 grid-rows-[1fr_auto] gap-y-6 gap-x-8 w-full">
+          {/* Tag line - First row, spanning all columns */}
+          <div className="col-span-full px-4 sm:px-6 lg:px-8">
+            <h4 className="text-white font-light text-lg mb-0 font-poppins">
+              Next Generation Automation
+            </h4>
+          </div>
 
-        {/* Main Heading */}
-        <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-tight mb-6">
-          Minimise Costs,
-          <br />
-          Maximise Control
-        </h1>
+          {/* Left Section - Second row, spans full width on mobile/tablet, 2 columns on desktop */}
+          <div className="col-span-full lg:col-span-2 row-start-2 flex flex-col items-start px-4 sm:px-6 lg:px-8">
+            {/* Main Heading */}
+            <h1 className="text-white text-4xl sm:text-5xl lg:text-7xl font-medium leading-tight">
+              Minimise Costs,
+              <br />
+              Maximise Control
+            </h1>
+          </div>
 
-        {/* Description */}
-        <p className="text-gray-200 text-xl font-normal max-w-2xl mb-8">
-          At SUPCON, we transform the process industry with AI-driven
-          automation, empowering businesses in chemicals, energy, and new
-          materials.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap gap-4">
-          <Link
-            href="/request-demo"
-            className="bg-[var(--color-primary-blue)] hover:bg-white hover:text-[var(--color-primary-blue)] text-white px-8 py-3 rounded-full font-normal transition-colors"
-          >
-            Request a demo
-          </Link>
-          <Link
-            href="/learn-more"
-            className="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-normal transition-colors flex items-center gap-2"
-          >
-            Learn more <IoIosArrowDroprightCircle size={22} />
-            {/* <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
+          {/* Right Section - Third row on mobile/tablet, second row's third column on desktop */}
+          <div className="col-span-full lg:col-span-1 row-start-3 lg:row-start-2 flex flex-col items-start px-4 sm:px-6 lg:px-8">
+            {/* Description */}
+            <p className="text-gray-200 text-xl font-normal mb-8 text-left">
+              At SUPCON, we transform the process industry with AI-driven
+              automation, empowering businesses in chemicals, energy, and new
+              materials.
+            </p>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-row gap-4">
+              <CTAButton 
+                text="Request a demo" 
+                href="/request-demo" 
+                variant="filled" 
+                showArrow={false} 
+                className="block" 
               />
-            </svg> */}
-          </Link>
+              <CTAButton 
+                text="Learn more" 
+                href="/learn-more" 
+                variant="transparent" 
+                showArrow={true} 
+                className="block" 
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
